@@ -11,7 +11,7 @@
       <div class="modal-body">
         <form action="?id=<?=$value["idСотрудник"] ?>" method="POST">
         	<div class="form-group">
-        		<input type="text" class="form-control" name="editName" value="<?=$value['Наименование'] ?>" placeholder="Имя">
+        		<input type="text" class="form-control" name="editName" value="<?=$value['name'] ?>" placeholder="Имя">
         	</div>
         	<div class="modal-footer">
         		<button type="submit" name="editSubmit" class="btn btn-primary">Обновить</button>
@@ -36,7 +36,7 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
         <form action="?id=<?=$value["idСотрудник"] ?>" method="POST">
         	<button type="submit" name="deleteSubmit" class="btn btn-danger">Удалить</button>
-    	</form>
+    	  </form>
       </div>
     </div>
   </div>

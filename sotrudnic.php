@@ -2,9 +2,10 @@
 include "finction.php";
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="ru">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="./css/style.css" type="text/css">
 
@@ -47,12 +48,12 @@ include "finction.php";
                               <?php foreach ($result as $value) {?>
                                 <tr>
                                     <td>
-                                      <a href="?delete = <?=$value["idСотрудника"] ?>" data-toggle="modal" class="minus" data-target=" #deleteModal<?=$value["idСотрудника"]?> ">[-]</a>
-                                      <?php require 'modal.php'; ?>
+                                      <a href="?delete = <?=$value["idСотрудника"] ?>"  data-toggle="modal" class="minus" data-target="#deleteModal<?=$value["idСотрудника"]?> ">[-]</a>
+                                      <?php require "modal.php"; ?>
                                     </td>
                                     <td><?=$value["name"]?></td>
                                     <td>
-                                        <a href="?edit = <?=$value["idСотрудника"] ?>" class="edit" data-toggle="modal" data-target=" #editModal<?=$value["idСотрудника"]?> ">Edit</a>
+                                        <a href="?edit = <?=$value["idСотрудника"] ?>" class="edit" data-toggle="modal" data-target="#editModal<?=$value["idСотрудника"]?> ">Edit</a>
                                         <?php require 'modal.php'; ?>
                                     </td>
                                 </tr> <?php } ?>
@@ -78,7 +79,7 @@ include "finction.php";
               	      </div>
 
               	      <div class="modal-body">
-              	      <form action="" method="PSOT">
+              	      <form action="" method="POST">
               	        	<div class="form-group">
               	        		<input type="text" class="form-control" name="name" value="" placeholder="Имя">
               	        	</div>

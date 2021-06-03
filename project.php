@@ -4,12 +4,11 @@
 <?php
 include "config.php";
 
-$name = $_POST["work"];
-
-
  // CREATE
 
  if (isset($_POST["submit"])) {
+   $name = $_POST["work"];
+
     $sql = ("INSERT INTO `employee`(`work`) VALUES(?)");
     $query = $pdo -> prepare($sql);
     $query -> execute([$name]);
@@ -20,9 +19,6 @@ $name = $_POST["work"];
                 </button>
                 </div>';
 }
-else {
-  echo "error";
-}
 
 // READ
 
@@ -32,17 +28,14 @@ $result = $sql -> fetchAll();
 
 // UPDATE
 
-$editName = $_POST["editName"];
-$getId = $_GET["idСотрудника"];
-
 if (isset ($_POST["editSubmit"])) {
+  $editName = $_POST["editName"];
+  $getId = $_GET["idСотрудника"];
+
   $sqll = "UPDATE employee SET work=? WHERE idСотрудника=?";
   $querys = $pdo -> prepare($sqll);
   $querys = execute([$editName, $getId]);
   header("Location: ". $_SERVER['HTTP_REFERER']);
-}
-else {
-  echo "error";
 }
 
 //DELETE
@@ -52,8 +45,5 @@ if (isset($_POST['deleteSubmit'])) {
     $query = $pdo -> prepare($sql);
     $query = execute([$get_id]);
     header("Location: ". $_SERVER["HTTP REFERER"]);
-}
-else {
-  echo "error";
 }
 ?>

@@ -71,9 +71,37 @@ include "project.php";
                     </div>
                     <div class="btnadd">
                         <form action="" method="POST">
-                            <input class="plusProject" type="button" value="[+]">
+                            <input class="plusProject" type="button" value="[+]" data-toggle="modal" data-target="#Modal">
                         </form>
                     </div>
+                </div>
+
+                <!-- Модальное окно добавления сотрудника -->
+                <div class="modal fade" tabindex="-1" role="dialog" id="Modal">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content shadow">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Добавить сотрудника</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+
+                      <div class="modal-body">
+                      <form action="" method="POST">
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="work" value="" placeholder="Проект">
+                          </div>
+                      </div>
+
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                          <button type="submit" name="submit" class="btn btn-primary">Добавить</button>
+                      </div>
+
+                      </form>
+                    </div>
+                  </div>
                 </div>
             </section>
         </section>
