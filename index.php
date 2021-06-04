@@ -81,7 +81,7 @@ include "project.php";
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content shadow">
                       <div class="modal-header">
-                        <h5 class="modal-title">Добавить сотрудника</h5>
+                        <h5 class="modal-title">Добавить проект</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -92,6 +92,96 @@ include "project.php";
                           <div class="form-group">
                             <input type="text" class="form-control" name="work" value="" placeholder="Проект">
                           </div>
+                        <div class="LineWord">
+                          <label for="">Понедельник</label>
+                          <div class="form-group">
+                            <select class="" name="">
+                              <option value=""></option>
+                              <?php include "finction.php";?>
+                              <?php foreach ($result as $value) {?>
+                                <option value="<?php echo $value["name"]; ?>"><?php echo $value["name"]; ?></option>
+                              <?php }?>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="LineWord">
+                          <label for="">Вторник</label>
+                          <div class="form-group">
+                            <select class="" name="">
+                              <option value=""></option>
+                              <?php include "finction.php";?>
+                              <?php foreach ($result as $value) {?>
+                                <option value="<?php echo $value["name"]; ?>"><?php echo $value["name"]; ?></option>
+                              <?php }?>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="LineWord">
+                          <label for="">Среда</label>
+                          <div class="form-group">
+                            <select class="" name="">
+                              <option value=""></option>
+                              <?php include "finction.php";?>
+                              <?php foreach ($result as $value) {?>
+                                <option value="<?php echo $value["name"]; ?>"><?php echo $value["name"]; ?></option>
+                              <?php }?>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="LineWord">
+                          <label for="">Четверг</label>
+                          <div class="form-group">
+                            <select class="" name="">
+                              <option value=""></option>
+                              <?php include "finction.php";?>
+                              <?php foreach ($result as $value) {?>
+                                <option value="<?php echo $value["name"]; ?>"><?php echo $value["name"]; ?></option>
+                              <?php }?>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="LineWord">
+                          <label for="">Пятница</label>
+                          <div class="form-group">
+                            <select class="" name="">
+                              <option value=""></option>
+                              <?php include "finction.php";?>
+                              <?php foreach ($result as $value) {?>
+                                <option value="<?php echo $value["name"]; ?>"><?php echo $value["name"]; ?></option>
+                              <?php }?>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="LineWord">
+                          <label for="">Суббота</label>
+                          <div class="form-group">
+                            <select class="" name="">
+                              <option value=""></option>
+                              <?php include "finction.php";?>
+                              <?php foreach ($result as $value) {?>
+                                <option value="<?php echo $value["name"]; ?>"><?php echo $value["name"]; ?></option>
+                              <?php }?>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="LineWord">
+                          <label for="">Воскресенье</label>
+                          <div class="form-group">
+                            <select class="" name="">
+                              <option value=""></option>
+                              <?php include "finction.php";?>
+                              <?php foreach ($result as $value) {?>
+                                <option value="<?php echo $value["name"]; ?>"><?php echo $value["name"]; ?></option>
+                              <?php }?>
+                            </select>
+                          </div>
+                        </div>
                       </div>
 
                       <div class="modal-footer">

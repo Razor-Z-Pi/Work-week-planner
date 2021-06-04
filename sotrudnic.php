@@ -39,7 +39,6 @@ include "finction.php";
                         <table class="table" id="tbl">
                             <thead class="table-dark">
                                 <tr>
-                                    <th scope="col">#</th>
                                     <td scope="col">Имя</td>
                                     <th scope="col">#</th>
                                 </tr>
@@ -47,13 +46,10 @@ include "finction.php";
                             <tbody>
                               <?php foreach ($result as $value) {?>
                                 <tr>
-                                    <td>
-                                      <a href="?delete = <?=$value["idСотрудника"] ?>"  data-toggle="modal" class="minus" data-target="#deleteModal<?=$value["idСотрудника"]?> ">[-]</a>
-                                      <?php require "modal.php"; ?>
-                                    </td>
                                     <td><?=$value["name"]?></td>
                                     <td>
-                                        <a href="?edit = <?=$value["idСотрудника"] ?>" class="edit" data-toggle="modal" data-target="#editModal<?=$value["idСотрудника"]?> ">Edit</a>
+                                        <a href="?delete=<?=$value['idСотрудника'] ?>"  data-toggle="modal" class="minus" data-target="#deleteModal<?=$value["idСотрудника"]?> ">[-]</a>
+                                        <a href="?edit=<?=$value['idСотрудника'] ?>" class="edit" data-toggle="modal" data-target="#editModal<?=$value["idСотрудника"]?>">Редактировать</a>
                                         <?php require 'modal.php'; ?>
                                     </td>
                                 </tr> <?php } ?>
