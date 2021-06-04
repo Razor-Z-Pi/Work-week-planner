@@ -4,7 +4,7 @@ include "config.php";
 
 $name = @$_POST["name"];
 $editNames = @$_POST["editName"];
-$Id = @$_GET["idСотрудника"];
+$Id = @$_GET["idS"];
 
  // CREATE
 
@@ -33,8 +33,11 @@ if (isset ($_POST["editSubmit"])) {
 //DELETE
 
 if (isset($_POST["deleteSubmit"])) {
-    $sql = "DELETE FROM employee WHERE idСотрудника=?";
-    $query = $pdo -> prepare($sql);
-    $query -> execute([$Id]);
-    header("Location: ". $_SERVER["HTTP_REFERER"]);
+  $link = mysqli_connect($host, $profer, $password, $db) or die("Ошибка " . mysqli_error($link)); 
+  $id = mysqli_real_escape_string($link, $_POST["deleteSubmit"]);
+
+  $query ="DELETE FROM employee WHERE idS = '$id'";
+
+  $tester = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
+  mysqli_close($link);
 }
