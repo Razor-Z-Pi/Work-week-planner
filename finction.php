@@ -24,7 +24,7 @@ $result = $sql -> fetchAll();
 // UPDATE
 
 if (isset ($_POST["editSubmit"])) {
-  $sqll = "UPDATE employee SET name=? WHERE idСотрудника=?";
+  $sqll = "UPDATE `employee` SET `name`=? WHERE `idS`=?";
   $querys = $pdo -> prepare($sqll);
   $querys -> execute([$editNames, $Id]);
   header("Location: ". $_SERVER['HTTP_REFERER']);
@@ -32,12 +32,9 @@ if (isset ($_POST["editSubmit"])) {
 
 //DELETE
 
-if (isset($_POST["deleteSubmit"])) {
-  $link = mysqli_connect($host, $profer, $password, $db) or die("Ошибка " . mysqli_error($link)); 
-  $id = mysqli_real_escape_string($link, $_POST["deleteSubmit"]);
-
-  $query ="DELETE FROM employee WHERE idS = '$id'";
-
-  $tester = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
-  mysqli_close($link);
+if (isset ($_POST["deleteSubmit"])) {
+  $sql = "DELETE FROM employee WHERE idS=?";
+	$query = $pdo->prepare($sql);
+	$query->execute([$Id]);
+	header('Location: '. $_SERVER['HTTP_REFERER']);
 }

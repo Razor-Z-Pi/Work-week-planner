@@ -2,9 +2,10 @@
 include "project.php";
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="ru">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="./css/style.css" type="text/css">
 
@@ -14,18 +15,18 @@ include "project.php";
 
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-
+       
         <title>Планировщик недели</title>
     </head>
 
     <body>
-        <header class="header">
+        <header class="header"> <!--Шапка-->
             <h1 class="title">Планировщик рабочей недели!!!</h1>
         </header>
 
-        <section class="cont">
-            <section class="colCont">
-                <div class="panel">
+        <section class="cont"> <!--Контейнер с двумя панелями-->
+            <section class="colCont"> <!--Распологает на одной линии две панели-->
+                <div class="panel"><!--Боковая левая панель-->
                     <div class="btn">
                         <a class="clickbtn" href="index.php">Планировщик</a>
                     </div>
@@ -33,7 +34,7 @@ include "project.php";
                         <a class="clickbtn" href="sotrudnic.php">Сотрудники</a>
                     </div>
                 </div>
-                <div class="centerios">
+                <div class="centerios"> <!--Контейнер для кнопок и таблицы-->
                     <div class="infor">
                         <table class="table" id="tbl">
                             <thead class="table-dark">
@@ -53,18 +54,127 @@ include "project.php";
                             <tbody>
                               <?php foreach ($result as $value) { ?>
                                 <tr>
-                                    <td><a href="#" class="minus">[-]</a></td>
+                                    <td><a href="?delete=<?=$value['work'] ?>"  data-toggle="modal" class="minus" data-target="#deleteModal<?=$value['idP'] ?>">[-]</a></td>
                                     <td><?=$value["work"]?></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td><?=$value["Пон"]?></td>
+                                    <td><?=$value["Вт"]?></td>
+                                    <td><?=$value["Сре"]?></td>
+                                    <td><?=$value["Чтв"]?></td>
+                                    <td><?=$value["Пт"]?></td>
+                                    <td><?=$value["Сб"]?></td>
+                                    <td><?=$value["Вс"]?></td>
                                     <td>
-                                        <a href="#" class="edit">Edit</a>
+                                        <a href="?edit=<?=$value['work'] ?>" class="edit" data-toggle="modal" data-target="#editModal<?=$value['idP'] ?>">Редактировать</a>
                                     </td>
+
+
+                                     <!-- Модальное окно удаления -->
+                                     <div class="modal fade" id="deleteModal<?=$value['idP'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                              <div class="modal-dialog modal-dialog-centered" role="document">
+                                                      <div class="modal-content shadow">
+                                                        <div class="modal-header">
+                                                          <h5 class="modal-title" id="exampleModalLabel">Удалить запись <?=$value['work'] ?></h5>
+                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                          </button>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена </button>
+                                                          <form action="?idP=<?=$value['idP']?>" method="POST">
+                                                              <button type="submit" name="deleteSubmit" class="btn btn-danger" style="margin-right: 12px;">Удалить </button>
+                                                          </form>
+                                                        </div>
+                                                      </div>
+                                              </div>
+                                        </div>
+
+                                    <!-- Модальное окно редактирования-->
+                                    <div class="modal fade" id="editModal<?=$value['idP'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content shadow">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Редактировать запись <?=$value["work"] ?></h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="?idP=<?=$value['idP']?>" method="POST">
+                                                            <div class="form-group">
+
+                                                                <input type="text" class="form-control" name="editName" value="<?=$value['work'] ?>" placeholder="Имя"><br>
+
+                                                                <label for="" class="TxT" style="margin-right: 60px;">Понедельник:</label>
+                                                                <select name="editday1" сlass="SunnyDay">
+                                                                  <?php include "finction.php";?>
+                                                                  <?php foreach ($result as $value) {?>
+                                                                    <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
+                                                                  <?php }?>
+                                                                </select>
+                                                                <br> 
+
+                                                                <label for="" class="TxT" style="margin-right: 106px;">Вторник:</label>
+                                                                <select name="editday2" сlass="SunnyDay">
+                                                                  <?php include "finction.php";?>
+                                                                  <?php foreach ($result as $value) {?>
+                                                                  <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
+                                                                  <?php }?>
+                                                                </select> 
+                                                                <br>
+                                                                
+                                                                <label for="" class="TxT" style="margin-right: 127px;">Среда:</label>
+                                                                <select name="editday3" сlass="SunnyDay">
+                                                                  <?php include "finction.php";?>
+                                                                  <?php foreach ($result as $value) {?>
+                                                                  <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
+                                                                  <?php }?>
+                                                                </select> 
+                                                                <br>
+
+                                                                <label for="" class="TxT" style="margin-right: 111px;">Четверг:</label>
+                                                                <select name="editday4" сlass="SunnyDay">
+                                                                  <?php include "finction.php";?>
+                                                                  <?php foreach ($result as $value) {?>
+                                                                  <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
+                                                                  <?php }?>
+                                                                </select> 
+                                                                <br>
+
+                                                                <label for=""  class="TxT" style="margin-right: 105px;">Пятница:</label>
+                                                                <select name="editday5" сlass="SunnyDay">
+                                                                  <?php include "fnction.php";?>
+                                                                  <?php foreach ($result as $value) {?>
+                                                                  <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
+                                                                  <?php }?>
+                                                                </select> 
+                                                                <br>
+
+                                                                <label for="" class="TxT" style="margin-right: 110px;">Суббота:</label>
+                                                                <select name="editday6" сlass="SunnyDay">
+                                                                  <?php include "finction.php";?>
+                                                                  <?php foreach ($result as $value) {?>
+                                                                  <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
+                                                                  <?php }?>
+                                                                </select> 
+                                                                <br>
+
+                                                                <label for="" class="TxT" style="margin-right: 70px;">Воскресенье:</label>
+                                                                <select name="editday7" сlass="SunnyDay">
+                                                                  <?php include "finction.php";?>
+                                                                  <?php foreach ($result as $value) {?>
+                                                                  <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
+                                                                  <?php }?>
+                                                                </select> 
+
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="submit" name="editSubmit" class="btn btn-primary">Обновить</button>
+                                                            </div>
+                                                        </form>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>      
                                 </tr> <?php } ?>
                             </tbody>
                         </table>
@@ -90,103 +200,81 @@ include "project.php";
                       <div class="modal-body">
                       <form action="" method="POST">
                           <div class="form-group">
-                            <input type="text" class="form-control" name="work" value="" placeholder="Проект">
-                          </div>
-                        <div class="LineWord">
-                          <label for="">Понедельник</label>
-                          <div class="form-group">
-                            <select class="" name="">
-                              <option value=""></option>
+                            <input type="text" class="form-control" id="addTxT" name="work" value="" placeholder="Проект">
+                            <label for="" class="TxT" style="margin-right: 60px;">Понедельник</label>
+                            <select name="day1" id="SunnyDay">
                               <?php include "finction.php";?>
+                              <option value=""></option>
                               <?php foreach ($result as $value) {?>
-                                <option value="<?php echo $value["name"]; ?>"><?php echo $value["name"]; ?></option>
+                              <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
                               <?php }?>
-                            </select>
-                          </div>
-                        </div>
+                            </select> 
+                            <br>
 
-                        <div class="LineWord">
-                          <label for="">Вторник</label>
-                          <div class="form-group">
-                            <select class="" name="">
-                              <option value=""></option>
+                            <label for="" class="TxT" style="margin-right: 106px;">Вторник</label>
+                            <select name="day2" id="SunnyDay">
                               <?php include "finction.php";?>
+                              <option value=""></option>
                               <?php foreach ($result as $value) {?>
-                                <option value="<?php echo $value["name"]; ?>"><?php echo $value["name"]; ?></option>
+                              <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
                               <?php }?>
-                            </select>
-                          </div>
-                        </div>
+                            </select> 
+                            <br>
+                            
+                            <label for="" class="TxT" style="margin-right: 127px;">Среда</label>
+                            <select name="day3" id="SunnyDay">
+                              <?php include "finction.php";?>
+                              <option value=""></option>
+                              <?php foreach ($result as $value) {?>
+                              <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
+                              <?php }?>
+                            </select> 
+                            <br>
 
-                        <div class="LineWord">
-                          <label for="">Среда</label>
-                          <div class="form-group">
-                            <select class="" name="">
-                              <option value=""></option>
+                            <label for="" class="TxT" style="margin-right: 111px;">Четверг</label>
+                            <select name="day4" id="SunnyDay">
                               <?php include "finction.php";?>
+                              <option value=""></option>
                               <?php foreach ($result as $value) {?>
-                                <option value="<?php echo $value["name"]; ?>"><?php echo $value["name"]; ?></option>
+                              <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
                               <?php }?>
-                            </select>
-                          </div>
-                        </div>
+                            </select> 
+                            <br>
 
-                        <div class="LineWord">
-                          <label for="">Четверг</label>
-                          <div class="form-group">
-                            <select class="" name="">
+                            <label for="" class="TxT" style="margin-right: 105px;">Пятница</label>
+                            <select name="day5" id="SunnyDay">
+                              <?php include "fnction.php";?>
                               <option value=""></option>
-                              <?php include "finction.php";?>
                               <?php foreach ($result as $value) {?>
-                                <option value="<?php echo $value["name"]; ?>"><?php echo $value["name"]; ?></option>
+                              <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
                               <?php }?>
-                            </select>
-                          </div>
-                        </div>
+                            </select> 
+                            <br>
 
-                        <div class="LineWord">
-                          <label for="">Пятница</label>
-                          <div class="form-group">
-                            <select class="" name="">
-                              <option value=""></option>
+                            <label for="" class="TxT" style="margin-right: 110px;">Суббота</label>
+                            <select name="day6" id="SunnyDay">
                               <?php include "finction.php";?>
+                              <option value=""></option>
                               <?php foreach ($result as $value) {?>
-                                <option value="<?php echo $value["name"]; ?>"><?php echo $value["name"]; ?></option>
+                              <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
                               <?php }?>
-                            </select>
-                          </div>
-                        </div>
+                            </select> 
+                            <br>
 
-                        <div class="LineWord">
-                          <label for="">Суббота</label>
-                          <div class="form-group">
-                            <select class="" name="">
-                              <option value=""></option>
+                            <label for="" class="TxT" style="margin-right: 70px;">Воскресенье</label>
+                            <select name="day7" id="SunnyDay">
                               <?php include "finction.php";?>
+                                <option value=""></option>
                               <?php foreach ($result as $value) {?>
-                                <option value="<?php echo $value["name"]; ?>"><?php echo $value["name"]; ?></option>
+                                <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
                               <?php }?>
-                            </select>
+                            </select> 
                           </div>
-                        </div>
-
-                        <div class="LineWord">
-                          <label for="">Воскресенье</label>
-                          <div class="form-group">
-                            <select class="" name="">
-                              <option value=""></option>
-                              <?php include "finction.php";?>
-                              <?php foreach ($result as $value) {?>
-                                <option value="<?php echo $value["name"]; ?>"><?php echo $value["name"]; ?></option>
-                              <?php }?>
-                            </select>
-                          </div>
-                        </div>
                       </div>
 
                       <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                          <button type="submit" name="submit" class="btn btn-primary">Добавить</button>
+                          <button type="submit" name="submit" class="btn btn-primary" onClick="protect()" >Добавить</button>
                       </div>
 
                       </form>

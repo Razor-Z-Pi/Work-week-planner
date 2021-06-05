@@ -1,5 +1,0 @@
-function add() {
-
-}
-
-//alert(add());
