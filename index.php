@@ -142,7 +142,7 @@ include "project.php";
 
                                                                 <label for=""  class="TxT" style="margin-right: 105px;">Пятница:</label>
                                                                 <select name="editday5" сlass="SunnyDay">
-                                                                  <?php include "fnction.php";?>
+                                                                  <?php include "finction.php";?>
                                                                   <?php foreach ($result as $value) {?>
                                                                   <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
                                                                   <?php }?>
@@ -243,7 +243,7 @@ include "project.php";
 
                             <label for="" class="TxT" style="margin-right: 105px;">Пятница</label>
                             <select name="day5" id="SunnyDay">
-                              <?php include "fnction.php";?>
+                              <?php include "finction.php";?>
                               <option value=""></option>
                               <?php foreach ($result as $value) {?>
                               <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
