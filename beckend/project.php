@@ -32,14 +32,20 @@ if (isset($_POST["submit"])) {
 }
 
 // READ
-$sql = $pdo -> prepare(" SELECT `name` FROM `employee` INNER JOIN `project` on `project.Monday` = `employee.idS` WHERE ids = `Monday`");
+$sql = $pdo -> prepare(" SELECT p.idP, p.work, e.name FROM project p INNER JOIN employee e  ON p.Monday = e.idS
+                                                                       INNER JOIN employee e1 ON p.Tuesday = e1.idS
+                                                                       INNER JOIN employee e2 ON p.Wednesday = e2.idS
+                                                                       INNER JOIN employee e3 ON p.Thursday = e3.idS
+                                                                       INNER JOIN employee e4 ON p.Friday = e4.idS
+                                                                       INNER JOIN employee e5 ON p.Saturday = e5.idS
+                                                                       INNER JOIN employee e6 ON p.Sunday = e6.idS ");
 $sql -> execute();
 $result = $sql -> fetchAll();
 
 // UPDATE
 
 if (isset ($_POST["editSubmit"])) {
-  $sqll = "UPDATE `project` SET `work`=?, `Monday`=?, `Tuesday`=?, `Wednesday`=?, `Thursday`=?, `Friday`=?, `Saturday`=?, `Sunday`=? WHERE `idP`=?";
+  $sqll = ("UPDATE `project` SET `work`=?, `Monday`=?, `Tuesday`=?, `Wednesday`=?, `Thursday`=?, `Friday`=?, `Saturday`=?, `Sunday`=? WHERE `idP`=?");
   $querys = $pdo -> prepare($sqll);
   $querys -> execute([$editName, $editday1, $editday2, $editday3, $editday4, $editday5, $editday6, $editday7, $getId]);
   header("Location: ". $_SERVER['HTTP_REFERER']);
