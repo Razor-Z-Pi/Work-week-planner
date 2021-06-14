@@ -32,13 +32,7 @@ if (isset($_POST["submit"])) {
 }
 
 // READ
-$sql = $pdo -> prepare(" SELECT p.idP, p.work, e.name FROM project p INNER JOIN employee e  ON p.Monday = e.idS
-                                                                       INNER JOIN employee e1 ON p.Tuesday = e1.idS
-                                                                       INNER JOIN employee e2 ON p.Wednesday = e2.idS
-                                                                       INNER JOIN employee e3 ON p.Thursday = e3.idS
-                                                                       INNER JOIN employee e4 ON p.Friday = e4.idS
-                                                                       INNER JOIN employee e5 ON p.Saturday = e5.idS
-                                                                       INNER JOIN employee e6 ON p.Sunday = e6.idS ");
+$sql = $pdo -> prepare(" SELECT * FROM project ");
 $sql -> execute();
 $result = $sql -> fetchAll();
 

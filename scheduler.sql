@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Июн 14 2021 г., 12:37
+-- Время создания: Июн 14 2021 г., 18:55
 -- Версия сервера: 10.4.19-MariaDB
 -- Версия PHP: 8.0.6
 
@@ -41,8 +41,7 @@ INSERT INTO `employee` (`idS`, `name`) VALUES
 (2, 'Петя'),
 (3, 'Вася'),
 (4, 'Пётр'),
-(5, 'Павел'),
-(28, 'Reавпавп');
+(5, 'Павел');
 
 -- --------------------------------------------------------
 
@@ -53,13 +52,13 @@ INSERT INTO `employee` (`idS`, `name`) VALUES
 CREATE TABLE `project` (
   `idP` int(5) NOT NULL COMMENT 'Ключ',
   `work` varchar(35) NOT NULL COMMENT 'Название проекта',
-  `Monday` int(5) NOT NULL,
-  `Tuesday` int(5) NOT NULL,
-  `Wednesday` int(5) NOT NULL,
-  `Thursday` int(5) NOT NULL,
-  `Friday` int(5) NOT NULL,
-  `Saturday` int(5) NOT NULL,
-  `Sunday` int(5) NOT NULL
+  `Monday` varchar(50) NOT NULL,
+  `Tuesday` varchar(50) NOT NULL,
+  `Wednesday` varchar(50) NOT NULL,
+  `Thursday` varchar(50) NOT NULL,
+  `Friday` varchar(50) NOT NULL,
+  `Saturday` varchar(50) NOT NULL,
+  `Sunday` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -67,9 +66,7 @@ CREATE TABLE `project` (
 --
 
 INSERT INTO `project` (`idP`, `work`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`) VALUES
-(112, 'Проект-1', 1, 1, 1, 1, 1, 4, 1),
-(117, 'Проект-2', 3, 1, 1, 1, 1, 1, 1),
-(118, 'фвыфв', 2, 2, 4, 5, 28, 3, 3);
+(15, 'Проект', 'Иван', 'Иван', 'Иван', 'Иван', 'Иван', 'Павел', 'Иван');
 
 --
 -- Индексы сохранённых таблиц
@@ -95,29 +92,13 @@ ALTER TABLE `project`
 -- AUTO_INCREMENT для таблицы `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `idS` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Ключ', AUTO_INCREMENT=29;
+  MODIFY `idS` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Ключ', AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT для таблицы `project`
 --
 ALTER TABLE `project`
-  MODIFY `idP` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Ключ', AUTO_INCREMENT=139;
-
---
--- Ограничения внешнего ключа сохраненных таблиц
---
-
---
--- Ограничения внешнего ключа таблицы `project`
---
-ALTER TABLE `project`
-  ADD CONSTRAINT `project_ibfk_1` FOREIGN KEY (`Monday`) REFERENCES `employee` (`idS`),
-  ADD CONSTRAINT `project_ibfk_2` FOREIGN KEY (`Tuesday`) REFERENCES `employee` (`idS`),
-  ADD CONSTRAINT `project_ibfk_3` FOREIGN KEY (`Wednesday`) REFERENCES `employee` (`idS`),
-  ADD CONSTRAINT `project_ibfk_4` FOREIGN KEY (`Thursday`) REFERENCES `employee` (`idS`),
-  ADD CONSTRAINT `project_ibfk_5` FOREIGN KEY (`Friday`) REFERENCES `employee` (`idS`),
-  ADD CONSTRAINT `project_ibfk_6` FOREIGN KEY (`Saturday`) REFERENCES `employee` (`idS`),
-  ADD CONSTRAINT `project_ibfk_7` FOREIGN KEY (`Sunday`) REFERENCES `employee` (`idS`);
+  MODIFY `idP` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Ключ', AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
