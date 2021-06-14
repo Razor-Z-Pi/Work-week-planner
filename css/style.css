@@ -1,162 +1,136 @@
 body {
-    margin: 0;
-    font-family: 'Noto Sans JP', sans-serif;
+  margin: 0;
+  font-family: 'Noto Sans JP', sans-serif;
 }
-
 /*********************************************************************/
 /*Шапка*/
 /*********************************************************************/
-
 .header {
-    width: 100%;
-    height: 100px;
-    background: #f19100 ;
-    opacity: .5;
-    display: flex;
-    justify-content: space-around
+  width: 100%;
+  height: 100px;
+  background: #f19100;
+  opacity: 0.5;
+  display: flex;
+  justify-content: space-around;
 }
-
 .header_Nav {
-    display: flex;
-    justify-content: start;
+  display: flex;
+  justify-content: start;
 }
-
 .header_fixed {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 1;
-
-    width: 100%;
-    background: black ;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  background: black ;
 }
-
 .title {
-    font-size: 40px;
-    font-style: italic;
-    color: red;
-
-    margin-top: 0;
-    text-align: center;
-    padding-top: 20px;
+  font-size: 40px;
+  font-style: italic;
+  color: red;
+  margin-top: 0;
+  text-align: center;
+  padding-top: 20px;
 }
-
 /*********************************************************************/
 /*Главный блок с содеожанием всех элементов */
 /*********************************************************************/
-
 .cont {
-    width: 100%;
-    height: 100%;
-    background-color: white;
+  width: 100%;
+  height: 100%;
+  background-color: white;
 }
-
 /*********************************************************************/
 /*Навигация*/
 /*********************************************************************/
-
 .btn {
-    margin-top: 10px;
-    width: 150px;
-    text-align: center;
+  margin-top: 10px;
+  width: 150px;
+  text-align: center;
 }
-
-.clickbtn:hover {
-    background-color: white;
-    box-shadow: 1px 5px 5px blue;
-}
-
 .clickbtn {
-    text-decoration: none;
-    color: red;
-    font-weight: bold;
-    text-transform: uppercase;
-
-    border-radius: 50px;
-
-    transition: color .5s linear;
-    transition: background .4s ease;
-    transition: box-shadow .4s ease;
+  text-decoration: none;
+  color: red;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 50px;
+  transition: color 0.5s linear;
+  transition: background 0.4s ease;
+  transition: box-shadow 0.4s ease;
 }
-
+.clickbtn:hover {
+  background-color: white;
+  box-shadow: 1px 5px 5px blue;
+}
 /*********************************************************************/
 /*Контейнер с таблицей*/
 /*********************************************************************/
-
 .centerios {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }
-
 .plusProject {
-    margin-top: 10px;
-    background-color: green;
-    border-radius: 20px;
-
-    width: 50px;
-    height: 40px;
-    border-color: rgba(174,255,92,0.3);
-    color: white;
-
-    transition: background .4s ease, color .5s linear;
+  margin-top: 10px;
+  background-color: green;
+  border-radius: 20px;
+  width: 50px;
+  height: 40px;
+  border-color: rgba(174, 255, 92, 0.3);
+  color: white;
+  transition: background 0.4s ease, color 0.5s linear;
 }
-
 .plusProject:hover {
-    background-color: yellow;
-    color: black;
-    font-weight: bold;
+  background-color: yellow;
+  color: black;
+  font-weight: bold;
 }
-
 .plusProject:active {
-    background-color: red;
+  background-color: red;
 }
-
 .infor {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
-
 /*********************************************************************/
 /*Кнопки редактирования и удаления*/
 /*********************************************************************/
-
 .edit {
-    text-decoration: none;
-    color: white;
-    background-color: green;
-    padding: 5px;
-    border-radius: 50px;
+  text-decoration: none;
+  color: white;
+  background-color: green;
+  padding: 5px;
+  border-radius: 50px;
 }
-
+.edit:hover {
+  background-color: yellow;
+  color: black;
+  margin: 0;
+}
 .minus {
-    text-decoration: none;
-    color: white;
-    background-color: green;
-    font-size: 18px;
-    padding: 2px 30px;
+  text-decoration: none;
+  color: white;
+  background-color: green;
+  font-size: 18px;
+  padding: 2px 30px;
 }
-
-.edit:hover, .minus:hover {
-    background-color: yellow;
-    color: black;
-    margin: 0;
+.minus:hover {
+  background-color: yellow;
+  color: black;
+  margin: 0;
 }
-
 /*********************************************************************/
 /*Select*/
 /*********************************************************************/
-
 .days {
-    margin-left: 300px;
+  margin-left: 300px;
 }
-
 .trCenter {
-    text-align: center;
+  text-align: center;
 }
-
 .TxT {
-    font-weight: bold;
-    font-size: 18px;
+  font-weight: bold;
+  font-size: 18px;
 }

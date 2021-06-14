@@ -27,7 +27,7 @@
         <header class="header" id="header"> <!--Шапка-->
             <h1 class="title">Планировщик рабочей недели!!!</h1>
             <div class="header_Nav">
-                <div class="btn">
+              <div class="btn">
                   <a class="clickbtn" href="index.php">Планировщик</a>
                 </div>
                 <div class="btn">
