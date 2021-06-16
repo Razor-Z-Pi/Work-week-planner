@@ -11,6 +11,7 @@ $day4 = @$_POST["day4"];
 $day5 = @$_POST["day5"];
 $day6 = @$_POST["day6"];
 $day7 = @$_POST["day7"];
+
 $editName = @$_POST["editName"];
 $editday1 = @$_POST["editday1"];
 $editday2 = @$_POST["editday2"];
@@ -19,6 +20,7 @@ $editday4 = @$_POST["editday4"];
 $editday5 = @$_POST["editday5"];
 $editday6 = @$_POST["editday6"];
 $editday7 = @$_POST["editday7"];
+
 $getId = @$_GET["idP"];
 
 
@@ -28,10 +30,12 @@ if (isset($_POST["submit"])) {
   $sql = ("INSERT INTO `project` (`work`,`Monday`,`Tuesday`,`Wednesday`,`Thursday`,`Friday`,`Saturday`,`Sunday`) VALUES(?,?,?,?,?,?,?,? )");
   $query = $pdo -> prepare($sql);
   $query -> execute([$name, $day1, $day2, $day3, $day4, $day5, $day6, $day7]);
+
   header("Location: ". $_SERVER['HTTP_REFERER']);
 }
 
 // READ
+
 $sql = $pdo -> prepare(" SELECT * FROM project ");
 $sql -> execute();
 $result = $sql -> fetchAll();

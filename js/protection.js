@@ -4,39 +4,38 @@ function Protection(test) {
         return false;
     }
 
+    var chetchik = 0;
+
     if (document.getElementById("SunnyDay1").value.length == 0){
-        alert("Выберите сотрудника")
-        return false;
+        chetchik += 1;
     }
 
     if (document.getElementById("SunnyDay2").value.length == 0){
-        alert("Выберите сотрудника")
-        return false;
+        chetchik += 1;
     }
 
     if (document.getElementById("SunnyDay3").value.length == 0){
-        alert("Выберите сотрудника")
-        return false;
+        chetchik += 1;
     }
 
     if (document.getElementById("SunnyDay4").value.length == 0){
-        alert("Выберите сотрудника")
-        return false;
+        chetchik += 1;
     }
 
     if (document.getElementById("SunnyDay5").value.length == 0){
-        alert("Выберите сотрудника")
-        return false;
+        chetchik += 1;
     }
 
     if (document.getElementById("SunnyDay6").value.length == 0){
-        alert("Выберите сотрудника")
-        return false;
+        chetchik += 1;
     }
 
     if (document.getElementById("SunnyDay7").value.length == 0){
-        alert("Выберите сотрудника")
-        return false;
+        chetchik += 1;
+    }
+
+    if (chetchik > 0) {
+        alert("Вы точно хотите пропустить столько дней " + chetchik );
     }
 }
 

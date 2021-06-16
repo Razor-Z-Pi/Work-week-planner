@@ -75,7 +75,6 @@
                                       <a href="?edit=<?=$value['work'] ?>" class="edit" data-toggle="modal" data-target="#editModal<?=$value['idP'] ?>">Редактировать</a>
                                     </td>
 
-
                                      <!-- Модальное окно удаления -->
                                      <div class="modal fade" id="deleteModal<?=$value['idP'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                               <div class="modal-dialog modal-dialog-centered" role="document">
@@ -109,14 +108,10 @@
                                                     <div class="modal-body">
                                                         <form action="?idP=<?=$value['idP']?>" method="POST">
                                                             <div class="form-group">
-
                                                                 <input type="text" class="form-control" name="editName" value="<?=$value['work'] ?>" placeholder="Имя"><br>
-                                                                <label for="" style="margin-left: 130px;">Количество сотрудников</label><br>
 
-                                                                <label for="" class="TxT" style="margin-right: 60px;">Понедельник:</label>
-
-                                                                <input type="number" min="1" max="3" style="margin-right: 30px;">
-
+                                                                <label for="" class="TxT" style="margin-right: 60px;">Понедельник:</label>                                                                
+                                                                <!--Понедельник-->
                                                                 <select name="editday1" сlass="SunnyDay">
                                                                   <option value="<?php echo $value["Monday"]?>"><?php echo $value["Monday"]?></option>
                                                                   <?php include_once("beckend/function.php");?>
@@ -125,7 +120,7 @@
                                                                   <?php }?>
                                                                 </select>
                                                                 <br> 
-
+                                                                <!--Вторник-->
                                                                 <label for="" class="TxT" style="margin-right: 106px;">Вторник:</label>
                                                                 <select name="editday2" сlass="SunnyDay">
                                                                   <option value="<?php echo $value["Tuesday"]?>"><?php echo $value["Tuesday"]?></option>
@@ -135,7 +130,7 @@
                                                                   <?php }?>
                                                                 </select> 
                                                                 <br>
-                                                                
+                                                                <!--Среда-->
                                                                 <label for="" class="TxT" style="margin-right: 127px;">Среда:</label>
                                                                 <select name="editday3" сlass="SunnyDay">
                                                                   <option value="<?php echo $value["Wednesday"]?>"><?php echo $value["Wednesday"]?></option>
@@ -144,8 +139,8 @@
                                                                   <option value="<?php echo $start["name"]?>"><?php echo $start["name"]?></option>
                                                                   <?php }?>
                                                                 </select> 
-                                                                <br>
-
+                                                                <br> 
+                                                                <!--Четверг-->
                                                                 <label for="" class="TxT" style="margin-right: 111px;">Четверг:</label>
                                                                 <select name="editday4" сlass="SunnyDay">
                                                                   <option value="<?php echo $value["Thursday"]?>"><?php echo $value["Thursday"]?></option>
@@ -154,8 +149,8 @@
                                                                   <option value="<?php echo $start["name"]?>"><?php echo $start["name"]?></option>
                                                                   <?php }?>
                                                                 </select> 
-                                                                <br>
-
+                                                                <br> 
+                                                                <!--Пятница-->
                                                                 <label for=""  class="TxT" style="margin-right: 105px;">Пятница:</label>
                                                                 <select name="editday5" сlass="SunnyDay">
                                                                   <option value="<?php echo $value["Friday"]?>"><?php echo $value["Friday"]?></option>
@@ -164,8 +159,8 @@
                                                                   <option value="<?php echo $start["name"]?>"><?php echo $start["name"]?></option>
                                                                   <?php }?>
                                                                 </select> 
-                                                                <br>
-
+                                                                <br> 
+                                                                <!--Суббота-->
                                                                 <label for="" class="TxT" style="margin-right: 110px;">Суббота:</label>
                                                                 <select name="editday6" сlass="SunnyDay">
                                                                   <option value="<?php echo $value["Saturday"]?>"><?php echo $value["Saturday"]?></option>
@@ -174,8 +169,8 @@
                                                                   <option value="<?php echo $start["name"]?>"><?php echo $start["name"]?></option>
                                                                   <?php }?>
                                                                 </select> 
-                                                                <br>
-
+                                                                <br> 
+                                                                <!--Воскресенье-->
                                                                 <label for="" class="TxT" style="margin-right: 70px;">Воскресенье:</label>
                                                                 <select name="editday7" сlass="SunnyDay">
                                                                   <option value="<?php echo $value["Sunday"]?>"><?php echo $value["Sunday"]?></option>
@@ -184,7 +179,7 @@
                                                                   <option value="<?php echo $start["name"]?>"><?php echo $start["name"]?></option>
                                                                   <?php }?>
                                                                 </select> 
-
+                                                                <br>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="submit" name="editSubmit" class="btn btn-primary">Обновить</button>
@@ -215,80 +210,82 @@
                       <form action="" method="POST">
                           <div class="form-group">
                             <input type="text" class="form-control" id="addTxT" name="work" value="" placeholder="Проект">
-                            <label for="" class="TxT" style="margin-right: 60px;">Понедельник</label>
+                            <label for="" class="TxT" style="margin-right: 60px;">Понедельник:</label>                                                                
+                            <!--Понедельник-->
                             <select name="day1" id="SunnyDay1">
-                              <?php include_once("beckend/function.php");?>
                               <option value=""></option>
-                              <?php foreach ($result as $value) {?>
-                              <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
+                              <?php include_once("beckend/function.php");?>
+                              <?php foreach ($result as $start) {?>
+                                <option value="<?php echo $start["name"]?>"><?php echo $start["name"]?></option>
                               <?php }?>
-                            </select> 
-                            <br>
-
-                            <label for="" class="TxT" style="margin-right: 106px;">Вторник</label>
+                            </select>
+                            <br> 
+                            <!--Вторник-->
+                            <label for="" class="TxT" style="margin-right: 106px;">Вторник:</label>
                             <select name="day2" id="SunnyDay2">
+                            <option value=""></option>
                               <?php include_once("beckend/function.php");?>
-                              <option value=""></option>
-                              <?php foreach ($result as $value) {?>
-                              <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
+                              <?php foreach ($result as $start) {?>
+                              <option value="<?php echo $start["name"]?>"><?php echo $start["name"]?></option>
                               <?php }?>
                             </select> 
-                            <br>
-                            
-                            <label for="" class="TxT" style="margin-right: 127px;">Среда</label>
+                            <br> 
+                            <!--Среда-->
+                            <label for="" class="TxT" style="margin-right: 127px;">Среда:</label>
                             <select name="day3" id="SunnyDay3">
+                            <option value=""></option>
                               <?php include_once("beckend/function.php");?>
-                              <option value=""></option>
-                              <?php foreach ($result as $value) {?>
-                              <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
+                              <?php foreach ($result as $start) {?>
+                              <option value="<?php echo $start["name"]?>"><?php echo $start["name"]?></option>
                               <?php }?>
                             </select> 
                             <br>
-
-                            <label for="" class="TxT" style="margin-right: 111px;">Четверг</label>
+                            <!--Четверг-->
+                            <label for="" class="TxT" style="margin-right: 111px;">Четверг:</label>
                             <select name="day4" id="SunnyDay4">
+                            <option value=""></option>
                               <?php include_once("beckend/function.php");?>
-                              <option value=""></option>
-                              <?php foreach ($result as $value) {?>
-                              <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
+                              <?php foreach ($result as $start) {?>
+                              <option value="<?php echo $start["name"]?>"><?php echo $start["name"]?></option>
                               <?php }?>
                             </select> 
                             <br>
-
-                            <label for="" class="TxT" style="margin-right: 105px;">Пятница</label>
+                            <!--Пятница-->
+                            <label for=""  class="TxT" style="margin-right: 105px;">Пятница:</label>
                             <select name="day5" id="SunnyDay5">
+                            <option value=""></option>
                               <?php include_once("beckend/function.php");?>
-                              <option value=""></option>
-                              <?php foreach ($result as $value) {?>
-                              <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
+                              <?php foreach ($result as $start) {?>
+                              <option value="<?php echo $start["name"]?>"><?php echo $start["name"]?></option>
                               <?php }?>
                             </select> 
-                            <br>
-
-                            <label for="" class="TxT" style="margin-right: 110px;">Суббота</label>
+                            <br> 
+                            <!--Суббота-->
+                            <label for="" class="TxT" style="margin-right: 110px;">Суббота:</label>
                             <select name="day6" id="SunnyDay6">
+                            <option value=""></option>
                               <?php include_once("beckend/function.php");?>
-                              <option value=""></option>
-                              <?php foreach ($result as $value) {?>
-                              <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
+                              <?php foreach ($result as $start) {?>
+                              <option value="<?php echo $start["name"]?>"><?php echo $start["name"]?></option>
                               <?php }?>
                             </select> 
                             <br>
-
-                            <label for="" class="TxT" style="margin-right: 70px;">Воскресенье</label>
+                            <!--Воскресенье-->
+                            <label for="" class="TxT" style="margin-right: 70px;">Воскресенье:</label>
                             <select name="day7" id="SunnyDay7">
+                            <option value=""></option>
                               <?php include_once("beckend/function.php");?>
-                                <option value=""></option>
-                              <?php foreach ($result as $value) {?>
-                                <option value="<?php echo $value["name"]?>"><?php echo $value["name"]?></option>
+                              <?php foreach ($result as $start) {?>
+                              <option value="<?php echo $start["name"]?>"><?php echo $start["name"]?></option>
                               <?php }?>
                             </select> 
+                            <br>
                           </div>
                       </div>
 
                       <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                          <button type="submit" name="submit" class="btn btn-primary" onClick="return Protection(this.form)" >Добавить</button>
+                          <button type="submit" name="submit" class="btn btn-primary" onClick="return Protection(this.form)">Добавить</button>
                       </div>
 
                       </form>

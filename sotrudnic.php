@@ -42,107 +42,104 @@
               </div>
         </header>
  
-        <section class="cont"> <!--Контейнер с двумя панелями-->
-            <section class="colCont"> <!--Распологает на одной линии две панели-->
-                <div class="centerios"> <!--Контейнер для кнопок и таблицы-->
-                    <div class="infor">
-                        <table class="table" id="tbl">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Имя</th>
-                                    <th scope="col">#</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                              <?php foreach ($result as $value) {?>
-                                <tr>
-                                    <td>
-                                        
-                                    </td>
-                                    <td><?=$value["name"]?></td>
-                                    <td>                                  
-                                        <a href="?delete=<?=$value['name'] ?>"  data-toggle="modal" class="minus" data-target="#deleteModal<?=$value['idS'] ?>">[-]</a>
-                                        <a href="?edit=<?=$value['name'] ?>" class="edit" data-toggle="modal" data-target="#editModal<?=$value['idS'] ?>">Редактировать</a>
-                                    </td>
-
-                                    <!-- Модальное окно редактирования-->
-                                    <div class="modal fade" id="editModal<?=$value['idS'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content shadow">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Редактировать запись <?=$value["name"] ?></h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form action="?idS=<?=$value['idS']?>" method="POST">
-                                                            <div class="form-group">
-                                                                <input type="text" class="form-control" name="editName" value="<?=$value['name'] ?>" placeholder="Имя">
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="submit" name="editSubmit" class="btn btn-primary">Обновить</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Модальное окно удаления -->
-                                        <div class="modal fade" id="deleteModal<?=$value['idS'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="modal-content shadow">
-                                                        <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Удалить запись <?=$value['name'] ?></h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                                                        <form action="?idS=<?=$value['idS']?>" method="POST">
-                                                            <button type="submit" name="deleteSubmit" class="btn btn-danger">Удалить</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                </tr> <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
+         <section class="infor_tb">
+             <div class="tb_clip">
+             <table class="table" id="tbl">
+                 <thead class="table-dark">
+                     <tr>
+                         <th scope="col">#</th>
+                         <th scope="col">Имя</th>
+                         <th scope="col">#</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                 <?php foreach ($result as $value) {?>
+                     <tr>
+                         <td>
+                             
+                         </td>
+                         <td><?=$value["name"]?></td>
+                         <td>                                  
+                             <a href="?delete=<?=$value['name'] ?>"  data-toggle="modal" class="minus" data-target="#deleteModal<?=$value['idS'] ?>">[-]</a>
+                             <a href="?edit=<?=$value['name'] ?>" class="edit" data-toggle="modal" data-target="#editModal<?=$value['idS'] ?>">Редактировать</a>
+                         </td>
                 </div>
-
-                <!-- Модальное окно добавления сотрудника -->
-              	<div class="modal fade" tabindex="-1" role="dialog" id="Modal">
-              	  <div class="modal-dialog modal-dialog-centered" role="document">
-              	    <div class="modal-content shadow">
-              	      <div class="modal-header">
-              	        <h5 class="modal-title">Добавить сотрудника</h5>
-              	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              	          <span aria-hidden="true">&times;</span>
-              	        </button>
-              	      </div>
-
-              	      <div class="modal-body">
-              	      <form action="" method="POST">
-              	        	<div class="form-group">
-              	        		<input type="text" class="form-control" name="name" value="" placeholder="Имя">
-              	        	</div>
-              	      </div>
-
-              	      <div class="modal-footer">
-                	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                	        <button type="submit" name="submit" class="btn btn-primary" onClick="return sotrudnicProtect(this.form)">Добавить</button>
-              	      </div>
-              	  	</form>
-              	    </div>
-              	  </div>
-              	</div>
-            </section>
         </section>
+                            <!-- Модальное окно редактирования-->
+                    <div class="modal fade" id="editModal<?=$value['idS'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content shadow">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Редактировать запись <?=$value["name"] ?></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="?idS=<?=$value['idS']?>" method="POST">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="editName" value="<?=$value['name'] ?>" placeholder="Имя">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" name="editSubmit" class="btn btn-primary">Обновить</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Модальное окно удаления -->
+                        <div class="modal fade" id="deleteModal<?=$value['idS'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content shadow">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Удалить запись <?=$value['name'] ?></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                                        <form action="?idS=<?=$value['idS']?>" method="POST">
+                                            <button type="submit" name="deleteSubmit" class="btn btn-danger">Удалить</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </tr> <?php } ?>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Модальное окно добавления сотрудника -->
+      	<div class="modal fade" tabindex="-1" role="dialog" id="Modal">
+      	  <div class="modal-dialog modal-dialog-centered" role="document">
+      	    <div class="modal-content shadow">
+      	      <div class="modal-header">
+      	        <h5 class="modal-title">Добавить сотрудника</h5>
+      	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      	          <span aria-hidden="true">&times;</span>
+      	        </button>
+      	      </div>
+
+      	      <div class="modal-body">
+      	      <form action="" method="POST">
+      	        	<div class="form-group">
+      	        		<input type="text" class="form-control" name="name" value="" placeholder="Имя">
+      	        	</div>
+      	      </div>
+
+      	      <div class="modal-footer">
+        	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+        	        <button type="submit" name="submit" class="btn btn-primary" onClick="return sotrudnicProtect(this.form)">Добавить</button>
+      	      </div>
+      	  	</form>
+      	    </div>
+      	  </div>
+      	</div>
+
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
